@@ -3,11 +3,11 @@ const express = require('express');
 const userController = require('./controllers/userController');
 const loginController = require('./controllers/loginController');
 const errorHandler = require('./middlewares/errorHandler');
+const authmiddleware = require('./middlewares/authmiddleware');
 const {
   passwordValidate,
   emailValidate,
   displayNameValidate } = require('./middlewares/createUservalidators');
-
 const { 
   loginPasswordValidator,
   loginEmailValidator } = require('./middlewares/loginValidators');
@@ -24,6 +24,8 @@ app.get('/', (request, response) => {
 app.post('/user', displayNameValidate, emailValidate, passwordValidate, userController.createUser);
 
 app.post('/login', loginPasswordValidator, loginEmailValidator, loginController.login);
+
+app.get('/user', authmiddleware, userController.getUsers);
 
 app.use(errorHandler);
 

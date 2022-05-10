@@ -1,9 +1,7 @@
 const loginPasswordValidator = (req, res, next) => {
   const { password } = req.body;
-  console.log(password);
   const keys = Object.keys(req.body);
   const havePassword = keys.find((key) => key === 'password');
-  console.log(havePassword);
 
   if (!havePassword) return res.status(400).json({ message: '"password" is required' });
 
