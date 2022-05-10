@@ -27,6 +27,8 @@ app.post('/login', loginPasswordValidator, loginEmailValidator, loginController.
 
 app.get('/user', authmiddleware, userController.getUsers);
 
+app.get('/user/:id', authmiddleware, userController.getUserById);
+
 app.use(errorHandler);
 
 app.listen(3000, () => console.log('ouvindo porta 3000!'));
