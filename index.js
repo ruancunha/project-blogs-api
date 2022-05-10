@@ -3,6 +3,7 @@ const express = require('express');
 const userController = require('./controllers/userController');
 const loginController = require('./controllers/loginController');
 const categoriesController = require('./controllers/categoriesController');
+const postController = require('./controllers/postController');
 const errorHandler = require('./middlewares/errorHandler');
 const authmiddleware = require('./middlewares/authmiddleware');
 const {
@@ -28,11 +29,17 @@ app.post('/login', loginPasswordValidator, loginEmailValidator, loginController.
 
 app.post('/categories', authmiddleware, categoriesController.createCategory);
 
+// app.post('/post', authmiddleware, postController);
+
 app.get('/user', authmiddleware, userController.getUsers);
 
 app.get('/user/:id', authmiddleware, userController.getUserById);
 
 app.get('/categories', authmiddleware, categoriesController.getCategories);
+
+app.get('/post', authmiddleware, postController.getPosts);
+
+app.get('/post/:id', authmiddleware, postController.getPostById);
 
 app.use(errorHandler);
 

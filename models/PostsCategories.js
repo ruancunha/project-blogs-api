@@ -8,7 +8,7 @@ const PostsCategories = (sequelize) => {
   postCategories.associate = (models) => {
     models.BlogPosts.belongsToMany(
       models.Categories, 
-      { foreignKey: 'postId', otherKey: 'categoryId', through: postCategories, as: 'Categories' },
+      { foreignKey: 'postId', otherKey: 'categoryId', through: postCategories, as: 'categories' },
     );
     models.Categories.belongsToMany(
       models.BlogPosts, 
