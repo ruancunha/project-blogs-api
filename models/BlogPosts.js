@@ -22,7 +22,7 @@ const attributes = {
 };
 
 const BlogPosts = (sequelize) => {
-  const blogpost = sequelize.define('BlogPost', attributes,
+  const blogpost = sequelize.define('BlogPosts', attributes,
     {
       timestamps: false,
       tablename: 'BlogPosts',
