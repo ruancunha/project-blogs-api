@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const userController = require('./controllers/userController');
 const loginController = require('./controllers/loginController');
+const categoriesController = require('./controllers/categoriesController');
 const errorHandler = require('./middlewares/errorHandler');
 const authmiddleware = require('./middlewares/authmiddleware');
 const {
@@ -24,6 +25,8 @@ app.get('/', (request, response) => {
 app.post('/user', displayNameValidate, emailValidate, passwordValidate, userController.createUser);
 
 app.post('/login', loginPasswordValidator, loginEmailValidator, loginController.login);
+
+app.post('/categories', authmiddleware, categoriesController.createCategory);
 
 app.get('/user', authmiddleware, userController.getUsers);
 
