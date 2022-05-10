@@ -32,6 +32,8 @@ app.get('/user', authmiddleware, userController.getUsers);
 
 app.get('/user/:id', authmiddleware, userController.getUserById);
 
+app.get('/categories', authmiddleware, categoriesController.getCategories);
+
 app.use(errorHandler);
 
 app.listen(3000, () => console.log('ouvindo porta 3000!'));
